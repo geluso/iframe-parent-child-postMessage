@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <script>
+            window.addEventListener(
+                "message",
+                (ev) => {
+                    if (ev.origin !== "https://mooncolony.org") {
+                        console.warn("wrong domain", ev.origin);
+                        return;
+                    }
+                    const { A, B, C, D } = ev.data;
+                    console.log("data", { A, B, C, D });
+                    const aSpan = document.getElementById("aSpan");
+                    const bSpan = document.getElementById("bSpan");
+                    const cSpan = document.getElementById("cSpan");
+                    const dSpan = document.getElementById("dSpan");
+                    aSpan.textContent = A;
+                    bSpan.textContent = B;
+                    cSpan.textContent = C;
+                    dSpan.textContent = D;
+                    // TODO: Jon, insert your code here.
+                },
+                false,
+            );
+        </script>
+    </head>
+    <body>
+        <div>
+            <iframe
+                id="childFrame"
+                src="https://mooncolony.org/post-message/child.html?n994"
+                style="width: 600px; height: 300px; border: 1px solid #ccc"
+            ></iframe>
+        </div>
+
+        <div>
+            <div>A: <span id="aSpan"></span></div>
+            <div>B: <span id="bSpan"></span></div>
+            <div>C: <span id="cSpan"></span></div>
+            <div>D: <span id="dSpan"></span></div>
+        </div>
+    </body>
+</html>

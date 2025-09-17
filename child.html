@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const form = document.getElementById("postMessageForm");
+                form.addEventListener("submit", (ev) => {
+                    ev.preventDefault();
+                    const payload = {
+                        A: document.getElementById("inputA").value,
+                        B: document.getElementById("inputB").value,
+                        C: document.getElementById("inputC").value,
+                        D: document.getElementById("inputD").value,
+                    };
+                    console.log("postMessage", payload);
+                    window.parent.postMessage(payload, "https://5tephen.com");
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <form id="postMessageForm">
+            <div>A: <input id="inputA" /></div>
+            <div>B: <input id="inputB" /></div>
+            <div>C: <input id="inputC" /></div>
+            <div>D: <input id="inputD" /></div>
+            <button type="submit">postMessage</button>
+        </form>
+    </body>
+</html>
